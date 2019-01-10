@@ -10,7 +10,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-data_df=pd.read_csv('C:/Python_Programs/Housing/train.csv')#importing data
+path="C:/Users/PC/Downloads/Housing/train.csv"
+path2="'C:/Python_Programs/Housing/train.csv'"
+data_df=pd.read_csv(path)#importing data
 
 
 """To Check how many numeric and categorical data are present in the data"""
@@ -223,6 +225,56 @@ plt.ylabel('SalePrice')
 numeric1=['LotFrontage','LotArea','MasVnrArea','BsmtFinSF1','BsmtFinSF2','BsmtUnfSF','TotalBsmtSF','1stFlrSF','2ndFlrSF','LowQualFinSF','GrLivArea','BsmtFullBath','BsmtHalfBath','FullBath','HalfBath','GarageCars','GarageArea','WoodDeckSF','OpenPorchSF','EnclosedPorch','3SsnPorch','ScreenPorch','PoolArea']
                                                                                                                     
                                                                                      
+
+
+
+
+"""MSSubClass"""
+
+sns.boxplot(x="MSSubClass", y="SalePrice",data=data_df)
+
+
+data_df.Alley=data_df.Alley.map({'Pave':1, 'Grvl':2})
+data_df.loc[np.isnan(data_df.Alley),['Alley']]= 3
+
+
+"""MSZoning"""
+""" RL:1 RM:2 C(all):3 FV:4 RH:5 """
+
+data_df.MSZoning=data_df.MSZoning.map({'RL':1,'RM':2,'C(all)':3,'FV':4,'RH':5})
+
+
+""" LandContour """
+"""Lvl:1 Bnk:2 Low=3 HLS:4"""
+
+data_df.LandContour=data_df.LandContour.map({'Lvl':1,'Bnk':2,'Low':3,'HLS':4})
+
+
+
+""" Utilities """
+""" AllPub:1 NoSeWa:2 """
+
+data_df.Utilities=data_df.Utilities.map({'AllPub':1,'NoSeWa':2})
+
+
+
+""" LotConfig """
+""" Inside:1 Corner:2 CulDSac:3 FR2:4 FR3:5 """
+
+data_df.LotConfig=data_df.LotConfig.map({'Inside':1,'Corner':2,'CulDSac':3,'FR2':4,'FR3':5})
+
+
+""" LandSlope """
+""" Gtl:1 Mod:2 Sev:3 """
+
+data_df.LandSlope=data_df.LandSlope.map({'Gtl':1,'Mod':2,'Sev':3})
+
+
+
+
+
+
+
 
 
 
